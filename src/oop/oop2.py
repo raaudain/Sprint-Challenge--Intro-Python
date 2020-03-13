@@ -10,6 +10,7 @@ class GroundVehicle():
     # TODO
     def drive(self):
         print("vroooom")
+        print(f"Wheels: {self.num_wheels}")
 
 # Subclass Motorcycle from GroundVehicle.
 #
@@ -20,23 +21,27 @@ class GroundVehicle():
 
 # TODO
 class Motorcycle(GroundVehicle):
-    def __init__(self, num_wheels=2):
-        super().__init__()
-        self.num_wheels = num_wheels
+    def __init__(self):
+        super().__init__(num_wheels=2)
         
-    def __str__(self):
+    def drive(self):
         print("BRAAAP!!")
+        print(f"Wheels: {self.num_wheels}")
 
 vehicles = [
     GroundVehicle(),
     GroundVehicle(),
-    Motorcycle(num_wheels=2),
+    Motorcycle(),
     GroundVehicle(),
-    Motorcycle(num_wheels=2),
+    Motorcycle(),
 ]
 
 # Go through the vehicles list and print the result of calling drive() on each.
 
 # TODO
-ground_vehicle = GroundVehicle()
-print(GroundVehicle().drive())
+
+# test1 = Motorcycle()
+# print(f"test {test1.drive()}")
+
+for i in vehicles:
+    print(i.drive())
