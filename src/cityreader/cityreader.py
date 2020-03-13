@@ -10,7 +10,7 @@ class City:
     self.lon = lon
 
   def __str__(self):
-    return f"{self.name}, {self.lon}, {self.lat}"
+    return "{}, {}, {}".format(self.name, self.lat, self.lon)
 # We have a collection of US cities with population over 750,000 stored in the
 # file "cities.csv". (CSV stands for "comma-separated values".)
 #
@@ -33,11 +33,13 @@ def cityreader(cities=[]):
     # On my laptop I had to use full path.  Shorter paths resulted in this error: FileNotFoundError: [Errno 2] No such file or directory.
     #Sprint-Challenge--Intro-Python/src/cityreader/cities.csv
 
-    with open("/Users/ramon/Documents/lambda/06.ComputerScience/01.IntroToPythonAndOPP/Sprint-Challenge--Intro-Python/src/cityreader/cities.csv", "r") as csv_file:
-      csv_reader = csv.DictReader(csv_file)
+    with open("cities.csv", "r") as csv_file:
+      csv_reader = csv.reader(csv_file)
       next(csv_reader)
       for i in csv_reader:
-        cities.append(City(i["city"], i["lat"], i["lng"]))
+        # Looks like you can't append a dictionary to a list this way and pass the test:
+        # cities.append(City(i["city"], i["lat"], i["lng"]))
+        cities.append(City(i[0], float(i[3]), float(i[4])))
     return cities
 
 cityreader(cities)
