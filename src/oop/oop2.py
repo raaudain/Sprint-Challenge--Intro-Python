@@ -40,8 +40,6 @@ vehicles = [
 
 # TODO
 
-# test1 = Motorcycle()
-# print(f"test {test1.drive()}")
 
 for i in vehicles:
     print(i.drive())
