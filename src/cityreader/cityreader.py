@@ -3,7 +3,6 @@
 import csv
 
 
-
 class City:
   def __init__(self, name, lat, lon):
     self.name = name
@@ -11,7 +10,7 @@ class City:
     self.lon = lon
 
   def __str__(self):
-    return f"{self.name}, {self.lat}, {self.lon}"
+    return f"{self.name}, {self.lon}, {self.lat}"
 # We have a collection of US cities with population over 750,000 stored in the
 # file "cities.csv". (CSV stands for "comma-separated values".)
 #
@@ -32,20 +31,22 @@ def cityreader(cities=[]):
   # `cities` list
   
     # On my laptop I had to use full path.  Shorter paths resulted in this error: FileNotFoundError: [Errno 2] No such file or directory.
-    # /Users/ramon/Documents/lambda/06.ComputerScience/01.IntroToPythonAndOPP/Sprint-Challenge--Intro-Python/src/cityreader/cities.csv
+    #Sprint-Challenge--Intro-Python/src/cityreader/cities.csv
+
     with open("/Users/ramon/Documents/lambda/06.ComputerScience/01.IntroToPythonAndOPP/Sprint-Challenge--Intro-Python/src/cityreader/cities.csv", "r") as csv_file:
-      csv_reader = csv.reader(csv_file)
+      csv_reader = csv.DictReader(csv_file)
       next(csv_reader)
       for i in csv_reader:
-        cities.append(City(i[0], i[3], i[4]))
+        cities.append(City(i["city"], i["lat"], i["lng"]))
     return cities
 
 cityreader(cities)
 
 # Print the list of cities (name, lat, lon), 1 record per line.
 for c in cities:
-    print(c)
+  print(c)
 
+#print(cities)
 
 # STRETCH GOAL!
 #
