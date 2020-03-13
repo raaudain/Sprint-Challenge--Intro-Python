@@ -38,7 +38,7 @@ print(b)
 # Write a list comprehension that creates a list of names of everyone
 # whose name starts with any letter between 'C' and 'G' inclusive.
 print("Starts between C and G, inclusive:")
-c = [i.name for i in humans if "G" > i.name[0] > "C" ]
+c = [i.name for i in humans if "G" >= i.name[0] >= "C"]
 print(c)
 
 # Write a list comprehension that creates a list of all the ages plus 10.
@@ -56,7 +56,7 @@ print(e)
 # age, for example ("David", 31), for everyone between the ages of 27 and 32,
 # inclusive.
 print("Names and ages between 27 and 32:")
-f = [(i.name, i.age) for i in humans if 32 > i.age > 27]
+f = [(i.name, i.age) for i in humans if 32 >= i.age >= 27]
 print(f)
 
 
@@ -71,5 +71,5 @@ print(g)
 # Write a list comprehension that contains the square root of all the ages.
 print("Square root of ages:")
 import math
-h = [i.age**2 for i in humans]
+h = [math.sqrt(i.age) for i in humans]
 print(h)
